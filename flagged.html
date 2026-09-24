@@ -57,7 +57,7 @@
         <a class="case-back" href="index.html#projects">&larr; Back to Projects</a>
         <p class="case-eyebrow">Case Study</p>
         <h1>Flagged</h1>
-        <p class="case-hero-sub">A 2D decision game built in Godot, where the player works as a screener &mdash; interviewing people who walk across the screen and deciding whether to Keep or Let Go under a rule that changes every day.</p>
+        <p class="case-hero-sub">A 2D decision game built in Godot, where the player works as a screener interviewing people who walk across the screen and deciding whether to Keep or Let Go under a rules that change very day.</p>
 
         <div class="case-pillstats">
           <span class="chip">Godot / GDScript</span>
@@ -93,16 +93,15 @@
 
         <section id="overview">
           <h2>Project Overview</h2>
-          <p>Flagged is a 2D game in which the player works as a screener. Each in-game day, people walk across the screen and the player must interview them and decide whether to Keep or Let Go according to a rule that changes every day. Correct decisions earn money, wrong ones cost money, and rent is deducted when the day ends. If money drops below zero the save is locked as game over.</p>
-          <p>I built it with my teammate, Muhammad Furqan Ahmed, across three iteration phases &mdash; Analysis, Design and Construction &mdash; for our INFO3190 course project in March 2026.</p>
+          <p>Flagged is a 2D game in which the player works as a screener. Each in-game day, people walk across the screen and the player must interview them and decide whether to Keep or Let Go according to a rule that changes every day. Correct decisions earn money, wrong ones cost money, and rent is deducted when the day ends. If money drops below zero the save is locked as game over. My teammate Muhammad Furqan Ahmed and I built it across three iteration phases (Analysis, Design and Construction) for our INFO3190 course project in March 2026.</p>
         </section>
 
         <section id="research">
-          <h2>Research &amp; Discovery</h2>
+          <h2>User Research & Discovery</h2>
           <p>I first wanted to know whether this type of game was still relevant and whether an audience existed for it. The most popular game in the genre, Papers, Please, is over a decade old, yet popular games are still being made in it, such as No, I'm Not a Human. That told me the audience is still there.</p>
           <p>Before designing the interview and decision loop, I studied those two games. Both are built around the same core mechanic: inspect a person or item, then accept or reject it. Both also use a queue of people with limited time per decision. My main takeaway was that neither game lets the player choose who to inspect, so I built Flagged around that gap.</p>
           <p>Once the concept was settled, we did the Analysis iteration. We identified the actor (the Player) and the stakeholders (the NPCs and the Game System), then wrote eight use cases with triggers, preconditions, flows and exception conditions: New Game, Customize Character, Load Game, Delete Save, Interview NPC, Day Ends, Saves Game and Quit Game. Writing the exceptions showed where the interface had to protect the player, such as an empty username, an accidental delete, a corrupt save file, or a decision made after the day had ended.</p>
-          <div class="case-figure">Artifact: Use Case Diagram</div>
+          <div><img src="assets/UseCaseDiagram.png"></div>
         </section>
 
         <section id="problem">
@@ -120,14 +119,14 @@
             <li><strong>One interview at a time.</strong> Clicking a person makes them the interview target, freezes and hides them, opens the overlay and disables clicks on everyone else.</li>
             <li><strong>Information through a phone.</strong> The interview overlay includes a phone, and the apps available on it are set per day.</li>
           </ul>
-          <div class="case-figure">Artifact: Early sketches &amp; user flow map</div>
+          <div><img src="assets/EarlySC1.png"><img src="assets/EarlySC2.png"><img src="assets/NavigationDiagram.png"></div>
         </section>
 
         <section id="prototyping">
-          <h2>Prototyping (low &rarr; high fidelity)</h2>
+          <h2>Prototyping</h2>
           <p>The Analysis iteration produced a barebones prototype. In the Design iteration we expanded it into a full game loop and created the design class diagram, design-level sequence diagrams, the navigation diagram, a UI prototype, the output design and an entity relationship diagram. The Construction iteration refined the UI and UX.</p>
           <p>The UI prototype uses a minimalistic urban look with a monochrome palette of dark and light greys, black and white, keeping attention on the people, text and numbers rather than on decoration.</p>
-          <div class="case-figure">Low &rarr; high fidelity screens</div>
+          <div><img src="assets/HighSC1.png"></div>
         </section>
 
         <section id="testing">
@@ -141,7 +140,7 @@
         <section id="solution">
           <h2>Final Solution</h2>
           <p>The final game is a 6-day game that increases in challenge as you progress. The player creates or loads a profile, reads the day's rule and presses Begin Day. People walk across the screen, and clicking one opens the interview overlay with the phone. After the player chooses Keep or Let Go, the HUD updates. When the timer reaches zero, rent is applied, the day advances, and the result or a game-over message is shown. Pressing Return saves the profile.</p>
-          <div class="case-figure">Final interface screenshots</div>
+          <div>Final interface screenshots</div>
 
           <h3>Design Brief</h3>
           <p><strong>Goals and target audience.</strong> Flagged is a short-session, replayable decision game with rising tension and clear consequences, where the player's choice of whom to interview creates the strategy. It's aimed at casual PC players who enjoy games like Papers, Please or No, I'm Not a Human.</p>
