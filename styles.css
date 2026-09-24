@@ -102,13 +102,12 @@ button:focus-visible {
 .btn:hover { text-decoration: none; }
 
 .btn-primary {
-  background: var(--primary);
-  color: #fff;
+  background: #E9ECF1;
 }
 .btn-primary:hover { background: var(--primary-dark); }
 
 .btn-outline {
-  background: transparent;
+  background: #0F766E;
   border-color: var(--text);
   color: var(--text);
 }
@@ -246,7 +245,7 @@ button:focus-visible {
 }
 
 .project-card {
-  background: #fff;
+  background: #E9ECF1;
   border: 1px solid var(--surface);
   border-radius: var(--radius);
   padding: 16px;
@@ -311,6 +310,7 @@ button:focus-visible {
 
 .contact-list a {
   display: block;
+  background: #E9ECF1;
   border: 1px solid var(--surface);
   border-radius: var(--radius);
   padding: 10px 14px;
