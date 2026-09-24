@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <title>Flagged | Case Study | Colin Lyons</title>
+  <meta name="description" content="UX case study for Flagged, a 2D Godot decision game where the player interviews NPCs and decides who to keep under changing daily rules.">
+  <meta name="keywords" content="Colin Lyons, Flagged, Godot, game design, UX case study, GDScript">
+  <meta name="author" content="Colin Lyons">
+  <link rel="canonical" href="https://qcarter22.github.io/flagged.html">
+
+  <!-- Open Graph / social preview -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Flagged | Case Study | Colin Lyons">
+  <meta property="og:description" content="A 2D Godot game where you interview NPCs and decide who to keep under changing daily rules.">
+  <meta property="og:url" content="https://qcarter22.github.io/flagged.html">
+  <meta property="og:image" content="assets/og-image.jpg">
+
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a href="index.html#top" class="logo" aria-label="Colin Lyons, back to top"><img src="assets/CLLogo.png" style="width: 50px;"></a>
+
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="primary-nav" id="primaryNav">
+        <ul>
+          <li><a href="index.html#top">Home</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <a class="btn btn-outline nav-resume" href="assets/Colin-Lyons-Resume.pdf" download>Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Case hero -->
+    <section class="hero case-hero">
+      <div class="wrap">
+        <a class="case-back" href="index.html#projects">&larr; Back to Projects</a>
+        <p class="case-eyebrow">Case Study</p>
+        <h1>Flagged</h1>
+        <p class="case-hero-sub">A 2D decision game built in Godot, where the player works as a screener &mdash; interviewing people who walk across the screen and deciding whether to Keep or Let Go under a rule that changes every day.</p>
+
+        <div class="case-pillstats">
+          <span class="chip">Godot / GDScript</span>
+          <span class="chip">Team of 2 &middot; INFO3190</span>
+          <span class="chip">3 iteration phases</span>
+          <span class="chip">38 unit tests, 0 defects</span>
+        </div>
+
+        <div class="case-hero-image" aria-hidden="true">
+          <!-- Replace with a gameplay screenshot, e.g. assets/flagged-hero.png -->
+          Project hero image
+        </div>
+      </div>
+    </section>
+
+    <!-- Case body: TOC + content -->
+    <div class="wrap case-body">
+
+      <aside class="case-toc" aria-label="On this page">
+        <h2>On this page</h2>
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#problem">Problem</a></li>
+          <li><a href="#ideation">Ideation</a></li>
+          <li><a href="#prototyping">Prototyping</a></li>
+          <li><a href="#testing">Testing</a></li>
+          <li><a href="#solution">Solution</a></li>
+        </ul>
+      </aside>
+
+      <div class="case-content">
+
+        <section id="overview">
+          <h2>Project Overview</h2>
+          <p>Flagged is a 2D game in which the player works as a screener. Each in-game day, people walk across the screen and the player must interview them and decide whether to Keep or Let Go according to a rule that changes every day. Correct decisions earn money, wrong ones cost money, and rent is deducted when the day ends. If money drops below zero the save is locked as game over.</p>
+          <p>I built it with my teammate, Muhammad Furqan Ahmed, across three iteration phases &mdash; Analysis, Design and Construction &mdash; for our INFO3190 course project in March 2026.</p>
+        </section>
+
+        <section id="research">
+          <h2>Research &amp; Discovery</h2>
+          <p>I first wanted to know whether this type of game was still relevant and whether an audience existed for it. The most popular game in the genre, Papers, Please, is over a decade old, yet popular games are still being made in it, such as No, I'm Not a Human. That told me the audience is still there.</p>
+          <p>Before designing the interview and decision loop, I studied those two games. Both are built around the same core mechanic: inspect a person or item, then accept or reject it. Both also use a queue of people with limited time per decision. My main takeaway was that neither game lets the player choose who to inspect, so I built Flagged around that gap.</p>
+          <p>Once the concept was settled, we did the Analysis iteration. We identified the actor (the Player) and the stakeholders (the NPCs and the Game System), then wrote eight use cases with triggers, preconditions, flows and exception conditions: New Game, Customize Character, Load Game, Delete Save, Interview NPC, Day Ends, Saves Game and Quit Game. Writing the exceptions showed where the interface had to protect the player, such as an empty username, an accidental delete, a corrupt save file, or a decision made after the day had ended.</p>
+          <div class="case-figure">Artifact: Use Case Diagram</div>
+        </section>
+
+        <section id="problem">
+          <h2>Problem Statement</h2>
+          <p>Players of inspection-based decision games usually work through a fixed queue of people or items, making decisions under time pressure with little control over who they inspect. There is an opportunity to make the experience more engaging and strategic by letting players choose who to interview, while still making hard accept-or-reject decisions under changing rules and time limits.</p>
+          <p class="case-quote">How might we let players choose who to inspect, while keeping every decision tense, timed and consequential?</p>
+        </section>
+
+        <section id="ideation">
+          <h2>Ideation</h2>
+          <p>The problem statement and the use cases led to a set of interface decisions:</p>
+          <ul class="bullet-list">
+            <li><strong>Player-chosen interviews.</strong> People walk across the screen instead of waiting in a queue, and the player clicks whoever they want to interview. Anyone who leaves the screen uninspected counts as missed, and is penalized only if they should have been kept, so deciding who to skip is part of the strategy.</li>
+            <li><strong>Rule shown before the timer starts.</strong> A Day Begin message displays the day's instruction, and the timer only starts when the player presses Begin Day.</li>
+            <li><strong>One interview at a time.</strong> Clicking a person makes them the interview target, freezes and hides them, opens the overlay and disables clicks on everyone else.</li>
+            <li><strong>Information through a phone.</strong> The interview overlay includes a phone, and the apps available on it are set per day.</li>
+          </ul>
+          <div class="case-figure">Artifact: Early sketches &amp; user flow map</div>
+        </section>
+
+        <section id="prototyping">
+          <h2>Prototyping (low &rarr; high fidelity)</h2>
+          <p>The Analysis iteration produced a barebones prototype. In the Design iteration we expanded it into a full game loop and created the design class diagram, design-level sequence diagrams, the navigation diagram, a UI prototype, the output design and an entity relationship diagram. The Construction iteration refined the UI and UX.</p>
+          <p>The UI prototype uses a minimalistic urban look with a monochrome palette of dark and light greys, black and white, keeping attention on the people, text and numbers rather than on decoration.</p>
+          <div class="case-figure">Low &rarr; high fidelity screens</div>
+        </section>
+
+        <section id="testing">
+          <h2>Usability Testing</h2>
+          <p>In Construction we tested the logic behind the player experience with the GUT (Godot Unit Test) framework. We wrote 38 unit tests covering day data, every rule type, day loading, saving and profile serialization. All 38 passed and no defects were found.</p>
+          <p>Once the core loop was playable, we had 4 classmates play through the first two days with no instructions beyond pressing Start, and asked a few quick questions afterward.</p>
+          <p><strong>What we found:</strong> most testers understood Keep and Let Go right away, but some were unsure if they were making the right choices, so we added sound effects to confirm decisions. We also found the game was a bit slow &mdash; we didn't want the first days to be too fast for people to learn the loop, but once they'd picked it up they were stuck waiting at times.</p>
+          <p>So we increased the number of people on the first few days but reduced the penalty for wrong decisions early on, so slower learners wouldn't lose immediately. After these tweaks, a second round with 3 more testers had no one confused about whether they were doing the right thing or just waiting for the game to progress.</p>
+        </section>
+
+        <section id="solution">
+          <h2>Final Solution</h2>
+          <p>The final game is a 6-day game that increases in challenge as you progress. The player creates or loads a profile, reads the day's rule and presses Begin Day. People walk across the screen, and clicking one opens the interview overlay with the phone. After the player chooses Keep or Let Go, the HUD updates. When the timer reaches zero, rent is applied, the day advances, and the result or a game-over message is shown. Pressing Return saves the profile.</p>
+          <div class="case-figure">Final interface screenshots</div>
+
+          <h3>Design Brief</h3>
+          <p><strong>Goals and target audience.</strong> Flagged is a short-session, replayable decision game with rising tension and clear consequences, where the player's choice of whom to interview creates the strategy. It's aimed at casual PC players who enjoy games like Papers, Please or No, I'm Not a Human.</p>
+          <ul class="bullet-list">
+            <li><strong>Layout:</strong> people walk across the main screen, the HUD always shows day, money and time, and interviews open in an overlay so the player deals with one person at a time.</li>
+            <li><strong>Colour:</strong> a monochrome palette of greys, black and white gives a minimalist urban mood and keeps attention on the people, text and numbers.</li>
+            <li><strong>Typography:</strong> a share tech mono regular font reinforces the minimalist urban mood and reads clearly at small sizes.</li>
+          </ul>
+
+          <h3>Accessibility Considerations</h3>
+          <ul class="bullet-list">
+            <li>Errors use both a visible message and a sound, and other key events (interview open, button clicks, game over) have their own audio cues.</li>
+            <li>The day's rule is given as on-screen text before the timer starts.</li>
+            <li>Deleting a profile requires confirmation, and the pause menu lets the player stop the game.</li>
+            <li>The high-contrast greyscale palette avoids relying on colour to carry meaning.</li>
+          </ul>
+
+          <h3>Lessons Learned</h3>
+          <ul class="bullet-list">
+            <li><strong>Look for the gap in a genre.</strong> Studying two established games showed what they left out, and that became the core of the design.</li>
+            <li><strong>Data-driven design speeds up iteration.</strong> Keeping day settings in JSON let us adjust difficulty without changing code.</li>
+            <li><strong>Design the rules and the interface together.</strong> A rule is only fair if the player can read it and see it enforced exactly as written.</li>
+          </ul>
+        </section>
+
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>&copy; <span id="year"></span> Colin Lyons</p>
+      <a href="index.html#top">Back to home &uarr;</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Highlight the active TOC link based on scroll position
+    const sections = document.querySelectorAll('.case-content section[id]');
+    const tocLinks = document.querySelectorAll('.case-toc a');
+    if (sections.length && tocLinks.length) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            tocLinks.forEach((link) => link.classList.remove('is-active'));
+            const active = document.querySelector('.case-toc a[href="#' + entry.target.id + '"]');
+            if (active) active.classList.add('is-active');
+          }
+        });
+      }, { rootMargin: '-40% 0px -50% 0px' });
+      sections.forEach((section) => observer.observe(section));
+    }
+  </script>
+</body>
+</html>
